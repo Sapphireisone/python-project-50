@@ -1,6 +1,5 @@
 import argparse
-# from gendiff.modules.generate_diff import generate_diff, FILE1, FILE2
-# from gendiff.modules.make_to_string import make_to_string
+from gendiff.modules.gendiff import generate_diff
 
 
 parser = argparse.ArgumentParser(description='Compares two configuration\
@@ -12,7 +11,8 @@ args = parser.parse_args()
 
 
 def main():
-    pass
+    dif = generate_diff('gendiff/files/file1.json', 'gendiff/files/file2.json')
+    print(dif)
 
 
 if __name__ == '__main__':

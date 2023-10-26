@@ -1,0 +1,10 @@
+.venv/
+.vscode/
+.chat/
+dist/
+.trunk/
+__pycache__
+gendiff/files/__pycache__
+gendiff/modules/__pycache__
+gendiff/scripts/__pycache__
+.pytest_cache/
