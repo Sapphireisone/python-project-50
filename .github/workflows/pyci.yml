@@ -24,6 +24,7 @@ jobs:
           make install
       - name: Run linter and pytest
         run: |
+          make lint
           make check
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
