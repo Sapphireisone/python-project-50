@@ -14,10 +14,13 @@ result_4 = '{\n   follow: False\n   host: hexlet.io\n   proxy: 123.234.53.22\n\
 
 
 def test_gendiff():
-    assert generate_diff('tests/fixtures/test_file1.json', {}) == result_1
+    assert generate_diff('tests/fixtures/test_file1.json', 'tests/fixtures/\
+test_file3.json') == result_1
     assert generate_diff('tests/fixtures/test_file1.json', 'tests/fixtures/\
 test_file2.json') == result_2
-    assert generate_diff({}, 'tests/fixtures/test_file2.json') == result_3
-    assert generate_diff({}, {}) == {}
+    assert generate_diff('tests/fixtures/test_file3.json', 'tests/fixtures/\
+test_file2.json') == result_3
+    assert generate_diff('tests/fixtures/test_file3.json', 'tests/fixtures/\
+test_file3.json') == '{}'
     assert generate_diff('tests/fixtures/test_file1.json', 'tests/fixtures/\
 test_file1.json')
