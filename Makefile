@@ -9,3 +9,5 @@ pytest:
 
 build:
 		poetry build
+
+.PHONY: install lint pytest build
