@@ -12,7 +12,7 @@ def generate_diff(file_path1, file_path2):
             result[f'- {key}'] = file1[key]
         else:
             if file1.get(key) == file2.get(key):
-                result[f'{key}'] = file1[key]
+                result[f'  {key}'] = file1[key]
             else:
                 result[f'- {key}'] = file1[key]
                 result[f'+ {key}'] = file2[key]
