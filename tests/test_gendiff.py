@@ -1,13 +1,34 @@
 from gendiff.modules.gendiff import generate_diff
 
 
-result_1 = {'- follow': False, '- host': 'hexlet.io', '- proxy': '123.234.53.22', '- timeout': 50}
+result_1 = {
+    '- follow': False,
+    '- host': 'hexlet.io',
+    '- proxy': '123.234.53.22',
+    '- timeout': 50,
+}
 
-result_2 = {'- follow': False, '  host': 'hexlet.io', '- proxy': '123.234.53.22', '- timeout': 50, '+ timeout': 20, '+ verbose': True}
+result_2 = {
+    '- follow': False,
+    '  host': 'hexlet.io',
+    '- proxy': '123.234.53.22',
+    '- timeout': 50,
+    '+ timeout': 20,
+    '+ verbose': True,
+}
 
-result_3 = {'+ host': 'hexlet.io', '+ timeout': 20, '+ verbose': True}
+result_3 = {
+    '+ host': 'hexlet.io',
+    '+ timeout': 20,
+    '+ verbose': True,
+}
 
-result_4 = {'  follow': False, '  host': 'hexlet.io', '  proxy': '123.234.53.22', '  timeout': 50}
+result_4 = {
+    '  follow': False,
+    '  host': 'hexlet.io',
+    '  proxy': '123.234.53.22',
+    '  timeout': 50,
+}
 
 
 def test_gendiff():
