@@ -11,6 +11,6 @@ build:
 	poetry build
 
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
+	poetry run pytest --cov=gendiff --cov=test --cov-report xml
 
 .PHONY: install lint pytest build
