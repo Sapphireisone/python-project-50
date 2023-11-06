@@ -1,5 +1,5 @@
 import json
-import yaml
+# import yaml
 
 
 def parse(file_path: str):
@@ -8,3 +8,6 @@ def parse(file_path: str):
     else:
         file = yaml.safe_load(open(file_path))
     return file
+
+str = 'ASAM'
+print(str[::-1])
