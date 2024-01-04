@@ -32,7 +32,6 @@ def generate_diff(file1, file2):
             result.append({
                 "key": key,
                 "type": "changed",
-                "value1": child1,
-                "value2": child2,
+                "value": [child1, child2],
             })
     return result

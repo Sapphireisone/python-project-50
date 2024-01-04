@@ -14,9 +14,8 @@ def main():
     file1 = parse(args.first_file)
     file2 = parse(args.second_file)
     diff = generate_diff(file1, file2)
-    print(diff)
-    res = stylish(diff)
-    print(res)
+    result = stylish(diff)
+    print(result)
 
 
 if __name__ == '__main__':
