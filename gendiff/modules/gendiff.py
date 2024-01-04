@@ -1,22 +1,38 @@
-from gendiff.modules.parse import parse
-
-
-def generate_diff(file_path1, file_path2):
-    file1 = parse(file_path1)
-    file2 = parse(file_path2)
-    file1 = dict(sorted(file1.items(), key=lambda x: x[0])) if file1 else {}
-    file2 = dict(sorted(file2.items(), key=lambda x: x[0])) if file2 else {}
-    result = {}
-    for key in file1:
+def generate_diff(file1, file2):
+    keys = file1.keys() | file2.keys()
+    result = []
+    for key in sorted(keys):
+        child1 = file1.get(key)
+        child2 = file2.get(key)
         if key not in file2:
-            result[f'- {key}'] = file1[key]
+            result.append({
+                "key": key,
+                "type": "deleted",
+                "value": child1,
+            })
+        elif key not in file1:
+            result.append({
+                "key": key,
+                "type": "added",
+                "value": child2,
+            })
+        elif file1[key] == file2[key]:
+            result.append({
+                "key": key,
+                "type": "unchanged",
+                "value": child1,
+            })
+        elif isinstance(child1, dict) and isinstance(child2, dict):
+            result.append({
+                "key": key,
+                "type": "nested",
+                "value": generate_diff(child1, child2),
+            })
         else:
-            if file1.get(key) == file2.get(key):
-                result[f'  {key}'] = file1[key]
-            else:
-                result[f'- {key}'] = file1[key]
-                result[f'+ {key}'] = file2[key]
-    for key in file2:
-        if key not in file1:
-            result[f'+ {key}'] = file2[key]
+            result.append({
+                "key": key,
+                "type": "changed",
+                "value1": child1,
+                "value2": child2,
+            })
     return result

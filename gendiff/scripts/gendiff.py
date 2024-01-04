@@ -1,6 +1,7 @@
 import argparse
 from gendiff.modules.gendiff import generate_diff
-from gendiff.modules.make_str import make_str
+from gendiff.format.stylish import stylish
+from gendiff.modules.parse import parse
 
 
 def main():
@@ -10,8 +11,12 @@ def main():
     parser.add_argument('second_file')
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
-    diff = make_str(generate_diff(args.first_file, args.second_file))
+    file1 = parse(args.first_file)
+    file2 = parse(args.second_file)
+    diff = generate_diff(file1, file2)
     print(diff)
+    res = stylish(diff)
+    print(res)
 
 
 if __name__ == '__main__':
