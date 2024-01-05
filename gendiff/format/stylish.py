@@ -1,4 +1,4 @@
-def stylish(in_data, depth=1, result='{\n', end='}'):
+def stylish(in_data, depth=0, result='{\n', end='}'):
     shift = "  " + ("  " * depth)
     for dictionary in in_data:
         key = dictionary["key"]
@@ -15,7 +15,7 @@ def stylish(in_data, depth=1, result='{\n', end='}'):
             result += f"{shift}  {key}: {value}\n"
         else:
             result += shift + key + ": {\n"
-            result += f"{stylish(value, depth + 1, result='', end=' ')}\n"
+            result += f"{stylish(value, depth + 2, result='', end=' ')}\n"
             result += shift + "}\n"
 
     result += end
